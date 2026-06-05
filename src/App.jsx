@@ -460,7 +460,7 @@ function App() {
     return (
       <div style={styles.loginPage}>
         <div style={styles.loginBox}>
-          <h1>AutoRoumeliotis ERP</h1>
+          <h1>AutoRoumeliotiS</h1>
           <h2>Σύνδεση</h2>
 
           <input placeholder="Email" value={adminEmail} onChange={(e) => setAdminEmail(e.target.value)} style={styles.input} />
@@ -556,7 +556,7 @@ function App() {
                 <br />
                 Αιτία: {appointment.reason || "-"}
                 <br />
-                Κατάσταση: <strong>{appointment.status}</strong>
+                Κατάσταση: <strong>{statusLabels[appointment.status] || appointment.status}</strong>
                 <br />
                 Πρόταση συνεργείου: {appointment.proposed_date || "-"} {appointment.proposed_time || ""}
                 <br />
@@ -583,7 +583,7 @@ function App() {
   return (
     <div style={styles.app}>
       <div style={styles.topBar}>
-        <h1>AutoRoumeliotis ERP</h1>
+        <h1>AutoRoumeliotiS</h1>
         <button onClick={logout} style={styles.logoutButton}>Αποσύνδεση</button>
       </div>
 
@@ -748,7 +748,7 @@ function App() {
               <br />
               Αιτία: {appointment.reason || "-"}
               <br />
-              Κατάσταση: <strong>{appointment.status}</strong>
+              Κατάσταση: <strong>{statusLabels[appointment.status] || appointment.status}</strong>
               <br />
               Πρόταση: {appointment.proposed_date || "-"} {appointment.proposed_time || ""}
               <br />
@@ -791,5 +791,10 @@ const styles = {
   cancelButton: { background: "#64748b", color: "white", padding: 10, border: "none", borderRadius: 6, cursor: "pointer", fontWeight: "bold", width: "100%", marginBottom: 8 },
   deleteButton: { background: "#dc2626", color: "white", padding: 8, border: "none", borderRadius: 6, cursor: "pointer", fontWeight: "bold", width: "100%", marginBottom: 8 },
 }
-
+const statusLabels = {
+  pending: "Σε εκκρεμότητα",
+  approved: "Εγκρίθηκε",
+  rejected: "Απορρίφθηκε",
+  rescheduled: "Νέα ημερομηνία",
+}
 export default App
